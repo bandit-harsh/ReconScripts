@@ -8,6 +8,9 @@
 # Steps for Execution
 - Install the all the required tools.
 - Create the resolver.txt file `bash dnsme.sh`
+- Run passive script
+- Run active script
+
 
 # Remaining
 - Setup Cloud Tools

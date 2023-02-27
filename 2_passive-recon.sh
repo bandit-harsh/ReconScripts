@@ -8,8 +8,8 @@ if [ $# -eq 0 ]
     exit 1
 fi
 mkdir ~/
-amass enum --passive -d $1 -config ./amass.ini -o amass.txt
-~/go/bin/subfinder -d $1 -all -config ./subfinder.yaml -o subfinder.txt #config khud setup krni pdegi 
+amass enum --passive -d $1 -config ./config/amass.ini -o amass.txt
+~/go/bin/subfinder -d $1 -all -config ./config/subfinder.yaml -o subfinder.txt 
 ~/go/bin/gau --timeout 5 --subs $1 | ~/go/bin/unfurl -u domains | tee -a gau.txt
 ~/go/bin/waybackurls $1 | ~/go/bin/unfurl -u domains | sort -u waybackurl.txt
 ~/go/bin/github-subdomains -d $1 -t $2 -o github.txt
