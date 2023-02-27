@@ -82,7 +82,7 @@ cd ~/tools/
 echo "done"
 
 echo "installing Cloud_enum"
-git clone git clone https://github.com/initstring/cloud_enum.git
+git clone https://github.com/initstring/cloud_enum.git
 cd cloud_enum
 pip3 install -r requirements
 cd ~/tools/

@@ -12,3 +12,4 @@
 # Remaining
 - Setup Cloud Tools
 - Setup Subdomain takeover
+- Drop a sample config file in the scripts directory
