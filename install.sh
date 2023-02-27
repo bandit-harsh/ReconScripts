@@ -175,7 +175,7 @@ echo "done"
  go install github.com/tomnomnom/httprobe@latest
  go install github.com/gwen001/github-subdomains@latest
  go install github.com/glebarez/cero@latest
- go install github.com/projectdiscovery/subfinder@latest
+ go install -v github.com/projectdiscovery/subfinder/v2/cmd/subfinder@latest
  go install github.com/hvs-consulting/SANextract
  go install github.com/d3mondev/puredns/v2@latest
 
