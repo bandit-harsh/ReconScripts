@@ -27,7 +27,8 @@ source ~/.bash_profile
 cd ~/tools/
 echo "done"
 
-
+echo "Install S3scanner"
+sudo pip3 install s3scanner
 
 
 #Don't forget to set up AWS credentials!

@@ -2,7 +2,6 @@
 
 $1 - domain.com 
 $2 - Github Token file
-$3 - Resolver file
 amass enum --passive -d $1 -config ./amass.ini -o amass.txt
 ~/go/bin/subfinder -d $1 -all -config ./subfinder.yaml -o subfinder.txt #config khud setup krni pdegi 
 ~/go/bin/gau --timeout 5 --subs $1 | ~/go/bin/unfurl -u domains | tee -a gau.txt
@@ -16,5 +15,5 @@ cat amass.txt gau.txt subfinder.txt waybackurl.txt github.txt buffer.txt crtsh.t
 # Pass txt in puredns
 mkdir ~/recon
 mkdir ~/recon/passive-recon
-~/go/bin/puredns resolver ~/recon/passive-recon/final.txt -r $3 -w ~/recon/passive-recon/final-passive-resolved.txt
+~/go/bin/puredns resolver ~/recon/passive-recon/final.txt -r resources/resolvers.txt -w ~/recon/passive-recon/final-passive-resolved.txt
 
