@@ -19,5 +19,6 @@ echo -e "${RED}Do the TLS SAN manually with the help of subdomain.txt${NC}"
 # Permutation and altration of the subdomains
 
 ~/go/bin/gotator -sub ~/recon/active-recon/Resolved.txt -perm ~/tools/resources/permutation.txt -depth 1 -numbers 10 -mindup -adv -md > ~/recon/active-recon/gotator1.txt
+sleep 10
 ~/go/bin/puredns resolve ~/recon/active-recon/gotator1.txt -r ~/tools/resources/resolvers.txt -w ~/recon/active-recon/final-Resolved.txt 
 
