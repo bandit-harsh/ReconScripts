@@ -12,7 +12,6 @@ mkdir ~/recon/active-recon
 # Mergeing then and fetched the 302 redirected sites
 cat ~/recon/passive-recon/final-passive-resolved.txt bruteforce.txt | sort -u | tee subdomain.txt
 
-echo -e "${RED}Do the TLS SAN manually with the help of subdomain.txt${NC}"
 
 ~/go/bin/puredns resolve subdomain.txt -r ~/tools/resources/resolvers.txt -w ~/recon/active-recon/Resolved.txt
 

@@ -12,11 +12,11 @@ if [ $# -eq 0 ]
 fi
 echo "${RED}Make sure you have setup the awscli${NC}"
 mkdir ~/recon/cloud-assets
-cat ~/recon/passive-recon/final.txt ~/recon/active-recon/bruteforce.txt ~/recon/active-recon/final-Resolved.txt | sed 's/\./\n/g' | sort -u | tee -a ~/recon/cloud-assets/words.txt
-cat ~/recon/cloud-assets/words.txt | sed -E 's/$/\.s3.amazon.com/' | tee -a ~/recon/cloud-assets/buckets.txt
-~/tools/slurp/slurp-1.1.0-linux-amd64 domain -p ~/tools/slurp/permutations.json -t $1 -c 25 | tee -a ~/recon/cloud-assets/slurp-data.txt
+cat ~/recon/passive-recon/final.txt ~/recon/active-recon/bruteforce.txt ~/recon/active-recon/final-Resolved.txt | sed 's/\./\n/g' | sort -u | tee ~/recon/cloud-assets/words.txt
+cat ~/recon/cloud-assets/words.txt | sed -E 's/$/\.s3.amazon.com/' | tee ~/recon/cloud-assets/buckets.txt
+~/tools/slurp/slurp-1.1.0-linux-amd64 domain -p ~/tools/slurp/permutations.json -t $1 -c 25 | tee ~/recon/cloud-assets/slurp-data.txt
 
-S3scanner scan --buckets-file buckets.txt | tee -a ~/recon/cloud-assets/s3scanner.txt
+S3scanner scan --buckets-file buckets.txt | tee ~/recon/cloud-assets/s3scanner.txt
 
 ~/tools/cloud_enum/cloud_enum.py -k $1 -k $2 -k $3 -l ~/recon/cloud-assets/cloud-enum.txt
 

@@ -19,14 +19,6 @@ sudo apt-get install -y xargs
 sudo apt-get install -y python python3-pip
 sudo apt-get install -y golang-go
 mkdir ~/tools
-echo "installing bash_profile aliases from recon_profile"
-git clone https://github.com/nahamsec/recon_profile.git
-cd recon_profile
-cat bash_profile >> ~/.bash_profile
-source ~/.bash_profile
-cd ~/tools/
-echo "done"
-
 echo "Install S3scanner"
 sudo pip3 install s3scanner
 
