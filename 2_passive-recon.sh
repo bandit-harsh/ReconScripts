@@ -17,7 +17,7 @@ curl "https://tls.bufferover.run/dns?q=.$1" -H 'x-api-key: MNzjhSSofn1DXUokUAO0n
 curl -s https://crt.sh/\?q\=\%.$1\&output\=json | jq -r '.[].name_value' | sed 's/\*\.//g' | sort -u | ~/go/bin/httprobe | tee -a ./crtsh.txt
 
 # sort and combine all the txt final.txt
-cat amass.txt gau.txt subfinder.txt waybackurl.txt github.txt buffer.txt crtsh.txt | sort -u | tee -a ~/recon/passive-recon/final.txt
+cat amass.txt gau.txt subfinder.txt waybackurl.txt github.txt buffer.txt crtsh.txt | sed -E 's/^\s*.*:\/\///g'| sort -u | tee -a ~/recon/passive-recon/final.txt
 # Pass txt in puredns
 mkdir ~/recon
 mkdir ~/recon/passive-recon

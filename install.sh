@@ -81,12 +81,16 @@ pip3 install -r requirements.txt
 cd ~/tools/
 echo "done"
 
+echo "installing CloudBrute";mkdir cb;cd cb;wget https://github.com/0xsha/CloudBrute/releases/download/v1.0.7/cloudbrute_1.0.7_Linux_x86_64.tar.gz;tar xvf cloudbrute_1.0.7_Linux_x86_64.tar.gz;cd ~/tools/;echo "done"
+
+echo "Installing Slurp";git clone https://github.com/0xbharath/slurp.git; cd slurp; wget https://github.com/0xbharath/slurp/releases/download/1.1.0/slurp-1.1.0-linux-amd64;cd ~/tools/;echo "done"
 echo "installing Cloud_enum"
 git clone https://github.com/initstring/cloud_enum.git
 cd cloud_enum
-pip3 install -r requirements
+pip3 install -r requirements.txt
 cd ~/tools/
 echo "done"
+
 
 echo "installing teh_s3_bucketeers"
 git clone https://github.com/tomdev/teh_s3_bucketeers.git
