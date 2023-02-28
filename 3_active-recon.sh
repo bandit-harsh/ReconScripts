@@ -10,7 +10,7 @@ mkdir ~/recon/active-recon
 ~/go/bin/puredns bruteforce ~/tools/SecLists/Discovery/DNS/dns-Jhaddix.txt $1 -r ~/tools/resources/resolvers.txt -w ~/recon/active-recon/bruteforce.txt --bin ~/tools/massdns/bin/massdns
 # Uptill now we have two lists final-passive-resolved.txt and bruteforce.txt
 # Mergeing then and fetched the 302 redirected sites
-cat ~/recon/passive-recon/final-passive-resolved.txt bruteforce.txt | sort -u | tee -a subdomain.txt
+cat ~/recon/passive-recon/final-passive-resolved.txt bruteforce.txt | sort -u | tee subdomain.txt
 
 echo -e "${RED}Do the TLS SAN manually with the help of subdomain.txt${NC}"
 

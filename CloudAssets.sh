@@ -19,12 +19,6 @@ cat ~/recon/cloud-assets/words.txt | sed -E 's/$/\.s3.amazon.com/' | tee -a ~/re
 S3scanner scan --buckets-file buckets.txt | tee -a ~/recon/cloud-assets/s3scanner.txt
 
 ~/tools/cloud_enum/cloud_enum.py -k $1 -k $2 -k $3 -l ~/recon/cloud-assets/cloud-enum.txt
-# You will get the list of buckets found by above cmd 
-
-# Slurp - single domain s3 buckets enumerator
-
-# S3scanner - scan the S3 							buckets for sensitive files.
-
 
 # AWSBucketDump.py - scans the access and download the files
 # python3 AWSBucketDump.py -l ../buckets.txt -g interesting_Keywords.txt -D -m 500000 -d 1
