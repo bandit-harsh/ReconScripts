@@ -2,6 +2,9 @@
 sudo apt-get -y update
 sudo apt-get -y upgrade
 
+sudo apt-get install -y python3-pip
+sudo apt-get install -y python3
+
 
 sudo apt-get install -y libcurl4-openssl-dev
 sudo apt-get install -y libssl-dev
@@ -143,7 +146,7 @@ echo "done"
 echo "installing asnlookup"
 git clone https://github.com/yassineaboukir/asnlookup.git
 cd ~/tools/asnlookup
-pip install -r requirements.txt
+pip3 install -r requirements.txt
 cd ~/tools/
 echo "done"
 
