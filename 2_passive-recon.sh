@@ -7,6 +7,7 @@ if [ $# -eq 0 ]
     echo "Usage: script.sh domain.com github_tokens.txt"
     exit 1
 fi
+mkdir ~/recon
 mkdir ~/recon/raw-files
 rm -rf ~/recon/raw-files/*.txt
 amass enum --passive -d $1 -config ./config/amass.ini -o ~/recon/raw-files/amass.txt
