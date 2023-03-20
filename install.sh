@@ -77,8 +77,10 @@ cd ~/tools/
 echo "done"
 
 echo "installing CloudBrute";mkdir cb;cd cb;wget https://github.com/0xsha/CloudBrute/releases/download/v1.0.7/cloudbrute_1.0.7_Linux_x86_64.tar.gz;tar xvf cloudbrute_1.0.7_Linux_x86_64.tar.gz;cd ~/tools/;echo "done"
-
+echo "Installig dnsx"; mkdir dnsx;cd dnsx;wget https://github.com/projectdiscovery/dnsx/releases/download/v1.1.2/dnsx_1.1.2_linux_amd64.zip;unzip dnsx_1.1.2_linux_amd64.zip; cd ~/tools/;echo "done"
 echo "Installing Slurp";git clone https://github.com/0xbharath/slurp.git; cd slurp; wget https://github.com/0xbharath/slurp/releases/download/1.1.0/slurp-1.1.0-linux-amd64;cd ~/tools/;echo "done"
+
+echo "Installing hardcidr";git clone https://github.com/trustedsec/hardcidr.git; cd ~/tools/;echo "done"
 echo "installing Cloud_enum"
 git clone https://github.com/initstring/cloud_enum.git
 cd cloud_enum
@@ -162,12 +164,14 @@ echo "installing waybackurls"
 go install github.com/tomnomnom/waybackurls@latest
 echo "done"
 
+go install -v github.com/projectdiscovery/mapcidr/cmd/mapcidr@latest
+# go install -v github.com/projectdiscovery/dnsx/cmd/dnsx@latest
  go install github.com/Josue87/gotator@latest
  go install github.com/Emoe/kxss@latest
  go install github.com/tomnomnom/assetfinder@latest
  go install github.com/tomnomnom/waybackurls@latest
 # sudo pacman -S nuclei nuclei-templates
- go install github.com/projectdiscovery/nuclei/v2/cmd/nuclei
+go install -v github.com/projectdiscovery/nuclei/v2/cmd/nuclei@latest
  go install github.com/Josue87/gotator@latest
  go install github.com/lc/gau/v2/cmd/gau@latest
  go install github.com/tomnomnom/unfurl@latest
