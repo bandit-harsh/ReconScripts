@@ -11,7 +11,7 @@ mkdir ~/recon
 mkdir ~/recon/raw-files	
 rm -rf ~/recon/raw-files/*.txt
 amass enum --passive -d $1 -config ./config/amass.ini -o ~/recon/raw-files/amass.txt
-~/go/bin/subfinder -d $1 -all -config ./config/subfinder.yaml -o ~/recon/raw-files/subfinder.txt 
+subfinder -d $1 -all -config ./config/subfinder.yaml -o ~/recon/raw-files/subfinder.txt 
 ~/go/bin/gau --timeout 5 --subs $1 | ~/go/bin/unfurl -u domains | tee ~/recon/raw-files/gau.txt
 ~/go/bin/waybackurls $1 | ~/go/bin/unfurl -u domains | tee ~/recon/raw-files/waybackurl.txt | sort -u ~/recon/raw-files/waybackurl.txt
 ~/go/bin/github-subdomains -d $1 -t $2 -o ~/recon/raw-files/github.txt

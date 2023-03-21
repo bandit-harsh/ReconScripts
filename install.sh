@@ -153,11 +153,11 @@ cd ~/tools/
 echo "done"
 
 echo "installing httprobe"
-go install -u github.com/tomnomnom/httprobe@latest
+go install github.com/tomnomnom/httprobe@latest
 echo "done"
 
 echo "installing unfurl"
-go install -u github.com/tomnomnom/unfurl@latest
+go install  github.com/tomnomnom/unfurl@latest
 echo "done"
 
 echo "installing waybackurls"
@@ -171,7 +171,14 @@ go install -v github.com/projectdiscovery/mapcidr/cmd/mapcidr@latest
  go install github.com/tomnomnom/assetfinder@latest
  go install github.com/tomnomnom/waybackurls@latest
 # sudo pacman -S nuclei nuclei-templates
-go install -v github.com/projectdiscovery/nuclei/v2/cmd/nuclei@latest
+echo "Installing nuclei"
+wget https://github.com/projectdiscovery/nuclei/releases/download/v2.9.0/nuclei_2.9.0_linux_amd64.zip ; unzip nuclei_2.9.0_linux_amd64.zip;rm -rf nuclei_2.9.0_linux_amd64.zip; sudo mv nuclei /bin/
+echo "Installing MAPCIDR"
+wget https://github.com/projectdiscovery/mapcidr/releases/download/v1.1.1/mapcidr_1.1.1_linux_amd64.zip ; unzip mapcidr_1.1.1_linux_amd64.zip;rm -rf mapcidr_1.1.1_linux_amd64.zip LICENSE.MD  README.md ; sudo mv mapcidr /bin/
+echo "Installing subfinder"
+wget https://github.com/projectdiscovery/subfinder/releases/download/v2.5.7/subfinder_2.5.7_linux_amd64.zip ; unzip subfinder_2.5.7_linux_amd64.zip;rm -rf subfinder_2.5.7_linux_amd64.zip LICENSE.MD  README.md ; sudo mv subfinder /bin/
+
+
  go install github.com/Josue87/gotator@latest
  go install github.com/lc/gau/v2/cmd/gau@latest
  go install github.com/tomnomnom/unfurl@latest
@@ -179,7 +186,7 @@ go install -v github.com/projectdiscovery/nuclei/v2/cmd/nuclei@latest
  go install github.com/gwen001/github-subdomains@latest
  go install github.com/glebarez/cero@latest
  go install -v github.com/projectdiscovery/subfinder/v2/cmd/subfinder@latest
- go install github.com/hvs-consulting/SANextract
+ go install github.com/hvs-consulting/SANextract@latest
  go install github.com/d3mondev/puredns/v2@latest
 
 echo "installing crtndstry"
