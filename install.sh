@@ -202,7 +202,12 @@ cat dns-Jhaddix.txt | head -n -14 > clean-jhaddix-dns.txt
 cd ~/tools/
 echo "done"
 
+ wget https://github.com/trufflesecurity/trufflehog/releases/download/v3.29.1/trufflehog_3.29.1_linux_amd64.tar.gz; tar xvf trufflehog_3.29.1_linux_amd64.tar.gz;rm -rf trufflehog_3.29.1_linux_amd64.tar.gz LICENSE README.md; mv trufflehog ~/tools/
 
+wget https://github.com/tillson/git-hound/releases/download/v1.6.2/git-hound_1.6.2_linux_amd64.tar.gz; tar xvf git-hound_1.6.2_linux_amd64.tar.gz; rm -rf LICENSE README.md git-hound_1.6.2_linux_amd64.tar.gz; mv git-hound ~/tools/
+sudo apt-get install python3-dev libfuzzy-dev ssdeep
+
+pip3 install crosslinked
 
 echo -e "\n\n\n\n\n\n\n\n\n\n\nDone! All tools are set up in ~/tools"
 ls -la
