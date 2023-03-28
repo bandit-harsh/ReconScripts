@@ -16,9 +16,11 @@ cat ~/recon/passive-recon/final.txt ~/recon/active-recon/bruteforce.txt ~/recon/
 cat ~/recon/cloud-assets/words.txt | sed -E 's/$/\.s3.amazon.com/' | tee ~/recon/cloud-assets/buckets.txt
 ~/tools/slurp/slurp-1.1.0-linux-amd64 domain -p ~/tools/slurp/permutations.json -t $1 -c 25 | tee ~/recon/cloud-assets/slurp-data.txt
 
-S3scanner scan --buckets-file buckets.txt | tee ~/recon/cloud-assets/s3scanner.txt
+s3scanner scan --buckets-file ~/recon/cloud-assets/buckets.txt | tee ~/recon/cloud-assets/s3scanner.txt
 
 ~/tools/cloud_enum/cloud_enum.py -k $1 -k $2 -k $3 -l ~/recon/cloud-assets/cloud-enum.txt
+
+# run lazys3
 
 # AWSBucketDump.py - scans the access and download the files
 # python3 AWSBucketDump.py -l ../buckets.txt -g interesting_Keywords.txt -D -m 500000 -d 1

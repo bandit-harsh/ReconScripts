@@ -10,6 +10,7 @@ fi
 mkdir ~/recon
 mkdir ~/recon/raw-files	
 rm -rf ~/recon/raw-files/*.txt
+echo "$1""   "$(whois $1 | grep "Registrant Email" | egrep -ho "[[:graph:]]+@[[:graph:]]+") >> ~/recon/Registrant.txt
 amass enum --passive -d $1 -config ./config/amass.ini -o ~/recon/raw-files/amass.txt
 subfinder -d $1 -all -config ./config/subfinder.yaml -o ~/recon/raw-files/subfinder.txt 
 ~/go/bin/gau --timeout 5 --subs $1 | ~/go/bin/unfurl -u domains | tee ~/recon/raw-files/gau.txt

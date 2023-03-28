@@ -205,7 +205,7 @@ echo "done"
 wget https://github.com/tillson/git-hound/releases/download/v1.6.2/git-hound_1.6.2_linux_amd64.tar.gz; tar xvf git-hound_1.6.2_linux_amd64.tar.gz; rm -rf LICENSE README.md git-hound_1.6.2_linux_amd64.tar.gz; mv git-hound ~/tools/
 sudo apt-get install python3-dev libfuzzy-dev ssdeep
 chmod +x ~/tools/slurp/slurp-1.1.0-linux-amd64
-pip3 install crosslinked
+sudo pip3 install crosslinked
 
 echo -e "\n\n\n\n\n\n\n\n\n\n\nDone! All tools are set up in ~/tools"
 ls -la
