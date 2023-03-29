@@ -11,6 +11,14 @@ mkdir ~/recon
 mkdir ~/recon/raw-files	
 rm -rf ~/recon/raw-files/*.txt
 echo "$1""   "$(whois $1 | grep "Registrant Email" | egrep -ho "[[:graph:]]+@[[:graph:]]+") >> ~/recon/Registrant.txt
+# curl -s -A "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.85 Safari/537.36" "https://viewdns.info/reversewhois/?q=IP.Domains@nxp.com" | html2text | grep -Po "[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)" | tail -n +4  | head -n -1
+theHarvester -d $1 -b all -l 500 -f theharvester.html > ~/recon/$1/theharvester.txt
+mkdir ~/recon/$1/profiling
+cat ~/recon/$1/theharvester.txt | awk '/Users/,/IPs/' | sed -e '1,2d' | head -n -2 | anew -q ~/recon/$1/profiling/recousers.txt
+cat ~/recon/$1/theharvester.txt | awk '/Users/,/IPs/' | sed -e '1,2d' | head -n -2 | anew -q ~/recon/$1/profiling/users.txt
+cat ~/recon/$1/theharvester.txt | awk '/IPs/,/Emails/' | sed -e '1,2d' | head -n -2 | anew -q ~/recon/$1/profiling/ips.txt
+cat ~/recon/$1/theharvester.txt | awk '/Emails/,/Hosts/' | sed -e '1,2d' | head -n -2 | anew -q ~/recon/$1/profiling/emails.txt
+cat ~/recon/$1/theharvester.txt | awk '/Hosts/,/Trello/' | sed -e '1,2d' | head -n -2 | anew -q ~/recon/$1/profiling/hosts.txt
 amass enum --passive -d $1 -config ./config/amass.ini -o ~/recon/raw-files/amass.txt
 subfinder -d $1 -all -config ./config/subfinder.yaml -o ~/recon/raw-files/subfinder.txt 
 ~/go/bin/gau --timeout 5 --subs $1 | ~/go/bin/unfurl -u domains | tee ~/recon/raw-files/gau.txt
