@@ -54,7 +54,8 @@ git clone https://github.com/vortexau/dnsvalidator.git;cd dnsvalidator;sudo pyth
 echo "Installing Aquatone"
 go install github.com/michenriksen/aquatone@latest
 echo "done"
-
+#install metabigor
+go install github.com/j3ssie/metabigor@latest
 #install chromium
 echo "Installing Chromium"
 sudo snap install chromium
