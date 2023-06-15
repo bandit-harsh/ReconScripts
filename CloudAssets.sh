@@ -11,15 +11,16 @@ if [ $# -eq 0 ]
     exit 1
 fi
 echo "${RED}Make sure you have setup the awscli${NC}"
-mkdir ~/recon/cloud-assets
-cat ~/recon/passive-recon/final.txt ~/recon/active-recon/bruteforce.txt ~/recon/active-recon/final-Resolved.txt | sed 's/\./\n/g' | sort -u | tee ~/recon/cloud-assets/words.txt
-cat ~/recon/cloud-assets/words.txt | sed -E 's/$/\.s3.amazon.com/' | tee ~/recon/cloud-assets/buckets.txt
-~/tools/slurp/slurp-1.1.0-linux-amd64 domain -p ~/tools/slurp/permutations.json -t $1 -c 25 | tee ~/recon/cloud-assets/slurp-data.txt
+mkdir ~/recon/$1/cloud-assets
+cat ~/recon/$1/passive-recon/final.txt ~/recon/$1/active-recon/bruteforce.txt ~/recon/$1/active-recon/final-Resolved.txt | sed 's/\./\n/g' | sort -u | tee ~/recon/$1/cloud-assets/words.txt
+cat ~/recon/$1/cloud-assets/words.txt | sed -E 's/$/\.s3.amazon.com/' | tee ~/recon/$1/cloud-assets/buckets.txt
+~/tools/slurp/slurp-1.1.0-linux-amd64 domain -p ~/tools/slurp/permutations.json -t $1 -c 25 | tee ~/recon/$1/cloud-assets/slurp-data.txt
 
-s3scanner scan --buckets-file ~/recon/cloud-assets/buckets.txt | tee ~/recon/cloud-assets/s3scanner.txt
+s3scanner scan --buckets-file ~/recon/$1/cloud-assets/buckets.txt | tee ~/recon/$1/cloud-assets/s3scanner.txt
 
-~/tools/cloud_enum/cloud_enum.py -k $1 -k $2 -k $3 -l ~/recon/cloud-assets/cloud-enum.txt
-
+~/tools/cloud_enum/cloud_enum.py -k $1 -k $2 -k $3 -l ~/recon/$1/cloud-assets/cloud-enum.txt
+mkdir /tmp/logs/$1
+python3 s3cario.py -dL ~/recon/$1/active-recon/live -s -u -r --all | tee /tmp/logs/$1/s3cario
 # run lazys3
 
 # AWSBucketDump.py - scans the access and download the files
