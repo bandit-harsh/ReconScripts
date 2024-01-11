@@ -20,6 +20,16 @@ echo "$1""   "$(whois $1 | grep "Registrant Email" | egrep -ho "[[:graph:]]+@[[:
 # cat ~/recon/$1/theharvester.txt | awk '/Emails/,/Hosts/' | sed -e '1,2d' | head -n -2 | anew -q ~/recon/$1/profiling/emails.txt
 # cat ~/recon/$1/theharvester.txt | awk '/Hosts/,/Trello/' | sed -e '1,2d' | head -n -2 | anew -q ~/recon/$1/profiling/hosts.txt
 amass enum --passive -d $1 -config ./config/amass.ini -o ~/recon/$1/raw-files/amass.txt
+echo "Do you want to run Amass ACTIVE command? (yes/no)"
+read choice
+
+if [ "$choice" == "y" ]; then
+    echo "Running the command..."
+    amass enum --active -d $1 -config ./config/amass.ini -o ~/recon/$1/raw-files/active-amass.txt
+fi
+amass intel --org "$3"  -config ./config/amass.ini -o ~/recon/$1/raw-files/asn.network
+./amass intel -whois -df domains.txt -config ./config/amass.ini -o ~/recon/$1/raw-files/amass.root_domains
+
 subfinder -d $1 -all -config ./config/subfinder.yaml -o ~/recon/$1/raw-files/subfinder.txt 
 ~/go/bin/gau --timeout 5 --subs $1 | ~/go/bin/unfurl -u domains | tee ~/recon/$1/raw-files/gau.txt
 ~/go/bin/waybackurls $1 | ~/go/bin/unfurl -u domains | tee ~/recon/$1/raw-files/waybackurl.txt | sort -u ~/recon/$1/raw-files/waybackurl.txt
