@@ -151,6 +151,13 @@ pip3 install -r requirements.txt
 cd ~/tools/
 echo "done"
 
+ehco "Installing TeamsEnum"
+git clone https://github.com/sse-secure-systems/TeamsEnum.git
+cd ~/tools/TeamsEnum
+pip3 install -r requirements.txt
+cd ~/tools/
+echo "done"
+
 echo "installing httprobe"
 go install github.com/tomnomnom/httprobe@latest
 echo "done"
