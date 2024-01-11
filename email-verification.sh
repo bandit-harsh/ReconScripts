@@ -1,1 +1,15 @@
-python3 TeamsEnum.py -a token -t "$1" -o final2 -f remain
+#! /bin/bash
+
+# $1 - Domain.com
+# $2 - JWT Token 
+# $3 - emails.txt
+if [ $# -eq 0 ]
+  then
+    echo "Usage: script.sh domain.com JWT_token emails_file.txt"
+    exit 1
+fi
+mkdir ~/recon/$1
+mkdir ~/recon/$1/valid-emails	
+
+
+python3 ~/tools/TeamsEnum/TeamsEnum.py -a token -t "$2" -o ~/recon/$1/valid-emails/validated_emails.json -f $3
