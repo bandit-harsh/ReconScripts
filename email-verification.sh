@@ -13,3 +13,5 @@ mkdir ~/recon/$1/valid-emails
 
 
 python3 ~/tools/TeamsEnum/TeamsEnum.py -a token -t "$2" -o ~/recon/$1/valid-emails/validated_emails.json -f $3
+
+# https://github.com/immunIT/TeamsUserEnum
